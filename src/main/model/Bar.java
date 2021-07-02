@@ -1,22 +1,22 @@
 package model;
 
+import model.exceptions.NegativeValue;
+
 public class Bar {
 
-    private String label;
     private double value;
     private int length;
 
     //EFFECTS: constructs bar with length 0
-    public Bar(String label, double value) {
-        this.label = label;
+    public Bar(double value) throws NegativeValue {
+        if (value < 0) {
+            throw new NegativeValue();
+        }
         this.value = value;
         this.length = 0;
     }
 
     //getters
-    public String getLabel() {
-        return this.label;
-    }
     public double getValue() {
         return this.value;
     }
@@ -25,9 +25,6 @@ public class Bar {
     }
 
     //setters
-    public void setLabel(String label) {
-        this.label = label;
-    }
     public void setValue(double value) {
         this.value = value;
     }
